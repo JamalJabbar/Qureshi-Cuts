@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-family: "Manrope", "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+  background: #f6f0e5;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: "Manrope", "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(182, 136, 61, 0.1), transparent 30%),
+    #f6f0e5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.calligraphy-backdrop {
+  opacity: 0.42;
+  filter: blur(0.15px);
+  pointer-events: none;
+}
+
+.calligraphy-stroke {
+  fill: none;
+  stroke: rgba(112, 79, 49, 0.22);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 14;
+}
+
+.calligraphy-stroke.soft {
+  stroke-width: 10;
+  stroke: rgba(182, 136, 61, 0.16);
+}
+
+.calligraphy-stroke.fine {
+  stroke-width: 8;
+  stroke: rgba(182, 136, 61, 0.24);
+}
+
+.calligraphy-dot {
+  fill: rgba(182, 136, 61, 0.3);
+}
+
+.calligraphy-word {
+  fill: rgba(94, 63, 39, 0.84);
+  font-family: "Amiri", "Noto Naskh Arabic", serif;
+  font-size: 190px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.calligraphy-caption {
+  fill: rgba(94, 63, 39, 0.48);
+  font-family: "Manrope", "Avenir Next", sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.72em;
+}
+
+.editorial-frame::before,
+.editorial-frame::after {
+  content: "";
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid rgba(182, 136, 61, 0.28);
+}
+
+.editorial-frame::before {
+  left: 1rem;
+  top: 1rem;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.editorial-frame::after {
+  bottom: 1rem;
+  right: 1rem;
+  border-left: 0;
+  border-top: 0;
+}
+
+.arabesque-grid {
+  position: relative;
+  overflow: hidden;
+}
+
+.arabesque-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(22, 18, 15, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 18, 15, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(circle at center, black, transparent 82%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-height: 900px) and (min-width: 1024px) {
+  .calligraphy-backdrop {
+    opacity: 0.26;
+  }
+}
+
+@media (max-width: 768px) {
+  .calligraphy-word {
+    font-size: 122px;
+  }
+
+  .calligraphy-caption {
+    font-size: 14px;
+  }
+}
