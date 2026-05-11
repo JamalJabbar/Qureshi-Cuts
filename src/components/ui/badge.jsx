@@ -1,26 +1,19 @@
-import { cva } from "class-variance-authority";
-import { cn } from "../../lib/utils";
+import { motion, useReducedMotion } from "framer-motion";
+import { interactiveLift } from "../../animations";
 
-const badgeVariants = cva(
-  "inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
-  {
-    variants: {
-      variant: {
-        default:
-          "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
-        secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        outline: "text-foreground",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  },
-);
+export function Badge({ children }) {
+  const reduceMotion = useReducedMotion();
 
-function Badge({ className, variant, ...props }) {
-  return <div className={cn(badgeVariants({ variant }), className)} {...props} />;
+  return (
+    <motion.div
+      className="inline-flex items-center gap-3 rounded-full border border-ink/10 bg-white/55 px-5 py-2.5 text-sm uppercase tracking-[0.32em] text-stone backdrop-blur-sm"
+      initial="rest"
+      whileHover={reduceMotion ? undefined : "hover"}
+      animate="rest"
+      variants={interactiveLift}
+    >
+      <span className="h-2.5 w-2.5 rounded-full bg-brass" />
+      {children}
+    </motion.div>
+  );
 }
-
-export { Badge, badgeVariants };

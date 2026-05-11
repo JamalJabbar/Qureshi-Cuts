@@ -1,1 +1,0 @@
-# Qureshi Cuts
